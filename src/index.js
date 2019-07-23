@@ -1,12 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { BaseCSS } from 'styled-bootstrap-grid'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { Provider } from 'react-redux'
+import store from './redux/store'
+// import './firebase'
+import Routes from './routes'
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+class App extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <BaseCSS /> {/* Neccessary for bootstrap grid */}
+        <Routes />
+      </Provider>
+    )
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('root'))
