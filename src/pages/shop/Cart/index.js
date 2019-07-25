@@ -8,6 +8,10 @@ import { Flex } from '../../../styles/layout'
 import { CartTitle, CartContainer, TotalContainer } from './styles'
 
 class Cart extends React.Component {
+  purchaseItems = () => {
+    alert('I bought all these items guilt free')
+  }
+
   render() {
     const { cart } = this.props
     const total = cart.length * 1000
@@ -24,8 +28,8 @@ class Cart extends React.Component {
                 <P>${total}</P>
               </Flex>
             </TotalContainer>
-            <Flex justifyCenter={true}>
-              <Button width={'100%'}>PURCHASE</Button>
+            <Flex justifyCenter={true} style={{ marginTop: '30px'}}>
+              <Button onClick={this.purchaseItems} width={'100%'}>PURCHASE</Button>
             </Flex>
           </>
         }

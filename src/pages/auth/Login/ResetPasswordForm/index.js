@@ -32,7 +32,7 @@ class ResetPassword extends React.Component {
             disabled={isEmpty(email)}
             onClick={this.resetPassword}
             width={'100%'}>
-            SIGN UP
+            RESET
           </Button>
           {!isNil(resetMessage) && <P success={true} center={true}>{resetMessage}</P>}
         </Flex>

@@ -3,10 +3,11 @@ import { Photo, Heart, PriceContainer } from './styles'
 
 class Item extends React.Component {
   render() {
-    const { photo, addToCart } = this.props
+    const { photo, addToCart, removeFromCart } = this.props
     const price = 1000
+    const isLiked = photo.liked_by_user
     return (
-      <div onClick={() => addToCart(photo)} style={{ position: 'relative' }}>
+      <div onClick={() => isLiked ? removeFromCart(photo.id) : addToCart(photo)} style={{ position: 'relative' }}>
       <Heart active={photo.liked_by_user} />
       <Photo src={photo.urls.regular} />
       <PriceContainer>

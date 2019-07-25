@@ -53,7 +53,7 @@ class Login extends React.Component {
   signInWithProvider = label => {
     const provider = isEqual(label, 'facebook')
       ? new firebase.auth.FacebookAuthProvider()
-      : new firebase.auth.TwitterAuthProvider()
+      : new firebase.auth.TwitterAuthProvider() /* My app still needs to be approved by twitter :( */
 
     dbAuth.signInWithPopup(provider)
       .then(res => {
@@ -101,7 +101,7 @@ class Login extends React.Component {
                 placeholder='Email' />
               <div style={{ position: 'relative' }}>
                 <TextInput
-                  style={{ paddingRight: '20px' }}
+                  padding={`20px 100px 20px 30px`}
                   borderNone={true}
                   type='password'
                   onChange={e => this.onInputChange('password', e)}

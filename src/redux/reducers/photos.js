@@ -2,7 +2,7 @@ import {
   FETCH_PHOTOS,
   FETCH_PHOTOS_SUCCESS,
   FETCH_PHOTOS_FAIL,
-  TOGGLE_FAVOURITE,
+  ADD_CART_ITEM,
   DELETE_CART_ITEM,
   RESET_PHOTOS,
 } from '../actions/types'
@@ -40,7 +40,7 @@ export default (state = initialState, action) => {
         loading: false,
       }
     }
-    case TOGGLE_FAVOURITE: {
+    case ADD_CART_ITEM: {
       const updatedPhotos = state.photos.map(photo => {
         if (isEqual(photo.id, action.payload.id)) {
           return {

@@ -1,5 +1,5 @@
 import {
-  TOGGLE_FAVOURITE,
+  ADD_CART_ITEM,
   DELETE_CART_ITEM,
 } from '../actions/types'
 import isEqual from 'lodash/isEqual'
@@ -10,17 +10,10 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch(action.type){
-    case TOGGLE_FAVOURITE: {
-
-      const liked = action.payload.liked_by_user
-
-      const cart = isEqual(liked, false) // photo is being liked
-        ? [...state.cart, action.payload]
-        : state.cart.filter(photo => !isEqual(action.payload.id, photo.id))
-
+    case ADD_CART_ITEM: {
       return {
         ...state,
-        cart,
+        cart: [...state.cart, action.payload],
       }
     }
     case DELETE_CART_ITEM: {

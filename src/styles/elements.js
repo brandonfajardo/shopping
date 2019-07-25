@@ -2,8 +2,7 @@ import styled from 'styled-components'
 import { lightgray } from './colours';
 
 export const TextInput = styled.input`
-  padding: 20px 30px;
-  padding-right: 100px !important;
+  padding: ${props => props.padding ? props.padding : '20px 30px'};
   outline: none;
   font-size: 16px;
   font-family: 'Source Code Pro', monospace;

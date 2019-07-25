@@ -1,5 +1,5 @@
 import React from 'react'
-import { fetchPhotos, addToCart, resetPhotos } from '../../../redux/actions/shop'
+import { fetchPhotos, addToCart, resetPhotos, deleteCartItem } from '../../../redux/actions/shop'
 import { connect } from 'react-redux'
 import { Container, Row, Col } from 'styled-bootstrap-grid'
 import isEmpty from 'lodash/isEmpty'
@@ -43,6 +43,10 @@ class ShopList extends React.Component {
     this.props.addToCart(photo)
   }
 
+  removeFromCart = photoId => {
+    this.props.deleteCartItem(photoId)
+  }
+
   searchCategory = e => {
     if (isEqual(e.key, 'Enter')) {
       this.props.resetPhotos()
@@ -62,7 +66,7 @@ class ShopList extends React.Component {
                 onChange={e => this.setState({ search: e.target.value })}
                 onKeyPress={this.searchCategory}
                 width={'100%'}
-                style={{ marginBottom: '40px' }} 
+                style={{ marginTop: '20px', marginBottom: '40px' }} 
                 placeholder='Enter a category to begin shopping' />
             </Col>
 
@@ -70,6 +74,7 @@ class ShopList extends React.Component {
             <ItemCol key={`item--${i}`} xs={4} sm={4} md={3}>
               <Item
                 addToCart={this.addToCart}
+                removeFromCart={this.removeFromCart}
                 photo={photo} />
             </ItemCol>
           ))}
@@ -99,6 +104,7 @@ const mapDispatchToProps = {
   fetchPhotos,
   addToCart,
   resetPhotos,
+  deleteCartItem
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShopList)

@@ -3,7 +3,7 @@ import {
   FETCH_PHOTOS,
   FETCH_PHOTOS_SUCCESS,
   FETCH_PHOTOS_FAIL,
-  TOGGLE_FAVOURITE,
+  ADD_CART_ITEM,
   DELETE_CART_ITEM,
   RESET_PHOTOS,
 } from './types'
@@ -19,12 +19,12 @@ export const fetchPhotos = (page, searchTerm) => {
       .catch(() => {
         dispatch({ type: FETCH_PHOTOS_FAIL })
       })
-    }, 800)
+    }, 1000)
   }
 }
 
 export const addToCart = photo => ({
-  type: TOGGLE_FAVOURITE,
+  type: ADD_CART_ITEM,
   payload: photo
 })
 
