@@ -8,6 +8,7 @@ import { P } from '../../../styles/fonts'
 import { Modal } from '../../../components'
 import isEqual from 'lodash/isEqual'
 import SignupForm from './SignupForm'
+import ResetPasswordForm from './ResetPasswordForm'
 import isNil from 'lodash/isNil'
 
 class Login extends React.Component {
@@ -15,6 +16,7 @@ class Login extends React.Component {
     email: null,
     password: null,
     displaySignupModal: false,
+    displayResetPasswordModal: false,
   }
 
   signIn = () => {
@@ -35,9 +37,15 @@ class Login extends React.Component {
     })
   }
 
+  toggleResetPassword = () => {
+    this.setState({
+      displayResetPasswordModal: !this.state.displayResetPasswordModal,
+    })
+  }
+
   render () {
     const { signingIn, signInError} = this.props
-    const { displaySignupModal } = this.state
+    const { displaySignupModal, displayResetPasswordModal } = this.state
 
     return (
       <LoginContainer fluid={true}>
@@ -47,17 +55,29 @@ class Login extends React.Component {
           </Modal>
         )}
 
+        {isEqual(displayResetPasswordModal, true) && (
+          <Modal closeAction={this.toggleResetPassword}>
+            <ResetPasswordForm />
+          </Modal>
+        )}
+
           <div style={{ margin: '0 auto', width: '400px'}}>
-              <TextInput
+            <TextInput
+              borderNone={true}
               type='email'
               onChange={e => this.onInputChange('email', e)}
               width={'100%'} 
               placeholder='Email' />
-            <TextInput
-              type='password'
-              onChange={e => this.onInputChange('password', e)}
-              width={'100%'}
-              placeholder='Password' />
+            <div style={{ position: 'relative' }}>
+              <TextInput
+                style={{ paddingRight: '20px' }}
+                borderNone={true}
+                type='password'
+                onChange={e => this.onInputChange('password', e)}
+                width={'100%'}
+                placeholder='Password' />
+                <P onClick={this.toggleResetPassword} click={true} altFont={true} style={{ color: 'grey', fontWeight: 800, position: 'absolute', right: 15, top: 5 }}>Forgot?</P>
+            </div>
             <Button
               disabled={signingIn}
               onClick={this.signIn}

@@ -4,6 +4,9 @@ import {
   SIGN_UP,
   SIGN_UP_FAIL,
   SIGN_UP_SUCCESS,
+  RESET_PASSWORD,
+  RESET_PASSWORD_SUCCESS,
+  RESET_PASSWORD_FAIL,
 } from '../actions/types'
 
 const initialState = {
@@ -11,39 +14,63 @@ const initialState = {
   signingUp: null,
   signUpError: null,
   signUpSuccess: null,
+  resetting: null,
 }
 
 export default (state = initialState, action) => {
   switch(action.type){
-    case SIGN_IN:
+    case SIGN_IN: {
       return {
         ...state,
         signingIn: true
       }
-    case SIGN_IN_FAIL: 
+    }
+    case SIGN_IN_FAIL: {
       return {
         ...state,
         signingIn: null,
         signInError: action.payload,
       }
-    case SIGN_UP: 
+    }
+    case SIGN_UP: {
       return {
         ...state,
         signingUp: true
       }
-    case SIGN_UP_SUCCESS:
+    }
+    case SIGN_UP_SUCCESS: {
       return {
         ...state,
         signingUp: null,
         signUpError: null,
         signUpSuccess: action.payload,
       }
-    case SIGN_UP_FAIL:
+    }
+    case SIGN_UP_FAIL: {
       return {
         ...state,
         signUpError: action.payload,
         signingUp: null,
       }
+    }
+    case RESET_PASSWORD: {
+      return {
+        ...state,
+        resetting: true,
+      }
+    }
+    case RESET_PASSWORD_SUCCESS: {
+      return {
+        ...state,
+        resetting: false,
+      }
+    }
+    case RESET_PASSWORD_FAIL: {
+      return {
+        ...state,
+        resetting: false,
+      }
+    }
     default:
         return state
   }

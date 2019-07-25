@@ -1,10 +1,10 @@
 import React from 'react'
 import { ModalContainer, ModalOverlay, DialogueBox } from './styles'
 
-const Modal = ({ children, closeAction }) => {
+const Modal = ({ style, children, closeAction }) => {
   return (
     <ModalContainer>
-      <DialogueBox>
+      <DialogueBox style={style}>
         {children}
       </DialogueBox>
       <ModalOverlay onClick={() => closeAction()}/>

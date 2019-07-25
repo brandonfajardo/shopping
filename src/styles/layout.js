@@ -12,9 +12,14 @@ export const flexDirectionRow = `
   flex-direction: row;
 `
 
+export const spaceBetween = `
+  justify-content: space-between;
+`
+
 export const Flex = styled.div`
   display: flex;
   ${props => props.column && flexDirectionColumn};
   ${props => props.justifyCenter && justifyCenter};
   ${props => props.row && flexDirectionRow};
+  ${props => props.spaceBetween && spaceBetween};
 `

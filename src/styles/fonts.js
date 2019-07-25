@@ -8,6 +8,9 @@ export const h2Text = '22px'
 export const h4Text = '16px'
 export const bodyText = '14px'
 
+// Font weight
+export const bold = 800
+
 export const fontProps = css`
   ${colorProps}
   ${props => props.click && `
@@ -17,6 +20,10 @@ export const fontProps = css`
     text-align: center;
   `};
   ${props => props.altFont && sourceCodePro};
+  font-weight: ${props => props.bold && bold};
+  ${props => props.noMargin && `
+    margin: 0px;
+  `};
 `
 
 export const H1 = styled.h1`

@@ -25,7 +25,7 @@ export const ModalOverlay = styled.div`
 
 export const DialogueBox = styled.div`
   overflow: hidden;
-  width: 500px;
+  width: 600px;
   background-color: white;
   z-index: 999999;
   padding: 20px 40px;

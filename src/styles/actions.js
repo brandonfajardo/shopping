@@ -3,6 +3,7 @@ import { pink, pinkDark, white, colorProps } from './colours'
 import { h4Text } from './fonts'
 
 export const Button = styled.a`
+  height: 50px;
   display: block;
   text-align: center;
   width: ${props => props.width ? props.width : '175px'};

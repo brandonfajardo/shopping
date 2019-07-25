@@ -3,7 +3,10 @@ import {
   SIGN_IN_FAIL,
   SIGN_UP,
   SIGN_UP_FAIL,
-  SIGN_UP_SUCCESS,s
+  SIGN_UP_SUCCESS,
+  RESET_PASSWORD,
+  RESET_PASSWORD_SUCCESS,
+  RESET_PASSWORD_FAIL,
 } from './types'
 import { dbAuth } from '../../firebase'
 
@@ -28,6 +31,20 @@ export const signUp = (email, password) => {
       })
       .catch(e => {
         dispatch({ type: SIGN_UP_FAIL, payload: e.message })
+      })
+  }
+}
+
+export const sendPasswordResetEmail = email => {
+  return dispatch => {
+    dispatch({ type: RESET_PASSWORD })
+
+    dbAuth.sendPasswordResetEmail(email)
+      .then(() => {
+        dispatch({ type: RESET_PASSWORD_SUCCESS })
+      })
+      .catch(e => {
+        dispatch({ type: RESET_PASSWORD_FAIL, payload: e.message })
       })
   }
 }
