@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { white, overlay } from '../../styles/colours'
 
 export const ModalContainer = styled.div`
   display: flex;
@@ -20,13 +21,13 @@ export const ModalOverlay = styled.div`
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(59, 59, 59, 0.65);
+  background-color: ${overlay};
 `
 
 export const DialogueBox = styled.div`
   overflow: hidden;
   width: 600px;
-  background-color: white;
+  background-color: ${white};
   z-index: 999999;
   padding: 20px 40px;
   border-radius: 8px;

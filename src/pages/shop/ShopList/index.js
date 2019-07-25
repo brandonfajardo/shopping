@@ -8,6 +8,7 @@ import { TextInput } from '../../../styles/elements'
 import { Dot, DotWrapper } from '../../../styles/animations'
 import { NavBar } from '../../../components'
 import Item from './Item'
+import { ShopContainer, ItemCol } from './styles'
 
 class ShopList extends React.Component {
   state = {
@@ -55,7 +56,7 @@ class ShopList extends React.Component {
       <>
         <NavBar />
         <Container>
-          <Row style={{ marginTop: '150px' }}>
+          <ShopContainer>
             <Col>
               <TextInput
                 onChange={e => this.setState({ search: e.target.value })}
@@ -66,13 +67,13 @@ class ShopList extends React.Component {
             </Col>
 
           {!isEmpty(photos) && photos.map((photo, i) => (
-            <Col key={`item--${i}`}xs={4} sm={4} md={3} style={{ paddingBottom: '4px', paddingRight: '4px', paddingLeft: '4px' }}>
+            <ItemCol key={`item--${i}`} xs={4} sm={4} md={3}>
               <Item
                 addToCart={this.addToCart}
                 photo={photo} />
-            </Col>
+            </ItemCol>
           ))}
-          </Row>
+          </ShopContainer>
           {isEqual(loading, true) && (
             <DotWrapper>
               <Dot delay={'0s'} />

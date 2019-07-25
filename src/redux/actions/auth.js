@@ -16,6 +16,7 @@ export const signIn = (email, password) => {
 
     dbAuth.signInWithEmailAndPassword(email, password)
       .catch(e => {
+        console.log('e.message >>>>', e.message)
         dispatch({ type: SIGN_IN_FAIL, payload: e.message })
       })
   }

@@ -22,6 +22,7 @@ export const Button = styled.a`
   letter-spacing: 1px;
   ${props => props.disabled && `
     pointer-events: none !important;
+    opacity: 0.8;
   `};
 
   :hover {

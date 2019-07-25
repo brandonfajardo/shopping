@@ -27,7 +27,6 @@ export default (state = initialState, action) => {
       }
     }
     case SIGN_IN_FAIL: {
-      console.log('action >>>>', action)
       return {
         ...state,
         signingIn: null,

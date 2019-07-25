@@ -1,5 +1,8 @@
 import styled from 'styled-components'
 
+// Grid
+export const smWidth = '575px'
+
 export const justifyCenter = `
   justify-content: center;
 `

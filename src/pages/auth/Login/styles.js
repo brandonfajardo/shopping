@@ -1,17 +1,18 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { dirtyWhite } from '../../../styles/colours'
+import { P } from '../../../styles/fonts'
 import { Container } from 'styled-bootstrap-grid'
 import facebook from '../../../styles/images/facebook@3x.png'
 import twitter from '../../../styles/images/twitter.png'
 import { Row } from 'styled-bootstrap-grid'
+import { smWidth } from '../../../styles/layout'
 
 export const LoginContainer = styled(Container)`
   background: ${dirtyWhite};
   height: 100vh;
 `
 
-export const TwitterButton = styled.div`
-  background-image: url(${twitter});
+export const providerProps = css`
   background-size: contain;
   height: 60px;
   background-repeat: no-repeat;
@@ -23,17 +24,14 @@ export const TwitterButton = styled.div`
   flex-direction: row;
 `
 
+export const TwitterButton = styled.div`
+  background-image: url(${twitter});
+  ${providerProps};
+`
+
 export const FacebookButton = styled.div`
   background-image: url(${facebook});
-  background-size: contain;
-  height: 60px;
-  background-repeat: no-repeat;
-  width: 270px;
-  margin-top: 15px;
-  cursor: pointer;
-  display: flex;
-  justify-self: center;
-  flex-direction: row;
+  ${providerProps};
 `
 
 export const InnerContainer = styled.div`
@@ -67,7 +65,24 @@ export const AccentImage = styled.img`
 `
 
 export const ImagesContainer = styled(Row)`
-  @media screen and (min-width: 575px) {
+  @media screen and (min-width: ${smWidth}) {
     display: none;
   };
+`
+
+export const ForgotPassText = styled(P)`
+  color: grey !important;
+  font-weight: 800 !important;
+  position: absolute !important;
+  right: 15px !important;
+  top: 5px !important;
+`
+
+export const SideContainer = styled.div`
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  right: 0;
 `

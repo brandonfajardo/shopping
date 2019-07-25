@@ -5,30 +5,31 @@ import isEmpty from 'lodash/isEmpty'
 import CartItem from './CartItem'
 import { Button } from '../../../styles/actions'
 import { Flex } from '../../../styles/layout'
+import { CartTitle, CartContainer, TotalContainer } from './styles'
 
 class Cart extends React.Component {
   render() {
     const { cart } = this.props
     const total = cart.length * 1000
     return (
-      <div style={{ padding: '10px' }}>
-        <H2 style={{ marginBottom: '50px' }} altFont={true} center={true}>Items to review</H2>
+      <CartContainer>
+        <CartTitle altFont={true} center={true}>Items to review</CartTitle>
         {isEmpty(cart)
           ? <P center={true}>There are no items to review :(</P>
           : <>
             {cart.map(item => <CartItem {...item} />)}
-            <div style={{ marginTop: '50px', padding: '5px 0px', borderTop: '1px solid lightgray', borderBottom: '1px solid lightgray' }}>
+            <TotalContainer>
               <Flex spaceBetween={true}>
                 <P>Total:</P>
                 <P>${total}</P>
               </Flex>
-            </div>
+            </TotalContainer>
             <Flex justifyCenter={true}>
               <Button width={'100%'}>PURCHASE</Button>
             </Flex>
           </>
         }
-      </div>
+      </CartContainer>
     )
   }
 }
