@@ -7,6 +7,8 @@ import {
   WelcomeTitle,
   ImagesContainer,
   MainImage,
+  SideImageContainer,
+  ShopButton,
 } from './styles'
 import image from '../../../styles/images/base.png'
 import sideImage from '../../../styles/images/base3@2x.png'
@@ -27,15 +29,15 @@ class Welcome extends React.Component {
         <Container>
           <ImagesContainer>
             <Col xs={2} style={{ padding: '0px' }} />
-            <Col xs={8} style={{ padding: '0px' }}>
+            <Col xs={8} style={{ padding: '0px', display: 'flex', flexDirection: 'column'}}>
               <MainImage src={image} />
-              <Button width={'100%'} onClick={this.startShopping}>START SHOPPING</Button>
+              <ShopButton onClick={this.startShopping}>START SHOPPING</ShopButton>
             </Col>
             <Col xs={1} style={{ padding: '0px' }} />
             <Col xs={1} style={{ padding: '0px'}}>
-              <Flex column={true} justifyCenter={true} style={{ height: '100%'}}>
+              <SideImageContainer column={true} justifyCenter={true}>
                 <img src={sideImage} style={{ width: '100%', height: '75%' }}/>
-              </Flex>
+              </SideImageContainer>
             </Col>
           </ImagesContainer>
         </Container>

@@ -6,6 +6,7 @@ import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
 import { TextInput } from '../../../styles/elements'
 import { Dot, DotWrapper } from '../../../styles/animations'
+import { NavBar } from '../../../components'
 import Item from './Item'
 
 class ShopList extends React.Component {
@@ -51,33 +52,36 @@ class ShopList extends React.Component {
   render() {
     const { photos, loading } = this.props
     return (
-      <Container>
-        <Row style={{ marginTop: '150px' }}>
-          <Col>
-            <TextInput
-              onChange={e => this.setState({ search: e.target.value })}
-              onKeyPress={this.searchCategory}
-              width={'100%'}
-              style={{ marginBottom: '40px' }} 
-              placeholder='Enter a category to begin shopping' />
-          </Col>
+      <>
+        <NavBar />
+        <Container>
+          <Row style={{ marginTop: '150px' }}>
+            <Col>
+              <TextInput
+                onChange={e => this.setState({ search: e.target.value })}
+                onKeyPress={this.searchCategory}
+                width={'100%'}
+                style={{ marginBottom: '40px' }} 
+                placeholder='Enter a category to begin shopping' />
+            </Col>
 
-            {!isEmpty(photos) && photos.map((photo, i) => (
-              <Col key={`item--${i}`}xs={4} sm={4} md={3} style={{ paddingBottom: '4px', paddingRight: '4px', paddingLeft: '4px' }}>
-                <Item
-                  addToCart={this.addToCart}
-                  photo={photo} />
-              </Col>
-            ))}
-        </Row>
-        {isEqual(loading, true) && (
-           <DotWrapper>
-            <Dot delay={'0s'} />
-            <Dot delay={'.1s'} />
-            <Dot delay={'.2s'} />
-          </DotWrapper>
-        )}
-      </Container>
+          {!isEmpty(photos) && photos.map((photo, i) => (
+            <Col key={`item--${i}`}xs={4} sm={4} md={3} style={{ paddingBottom: '4px', paddingRight: '4px', paddingLeft: '4px' }}>
+              <Item
+                addToCart={this.addToCart}
+                photo={photo} />
+            </Col>
+          ))}
+          </Row>
+          {isEqual(loading, true) && (
+            <DotWrapper>
+              <Dot delay={'0s'} />
+              <Dot delay={'.1s'} />
+              <Dot delay={'.2s'} />
+            </DotWrapper>
+          )}
+        </Container>
+      </>
     )
   }
 }

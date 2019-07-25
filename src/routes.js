@@ -3,6 +3,7 @@ import { Router, Switch } from 'react-router-dom'
 import history from './history'
 import Login from './pages/auth/Login'
 import Welcome from './pages/misc/Welcome'
+import Home from './pages/misc/Home'
 import ShopList from './pages/shop/ShopList'
 import { dbAuth } from './firebase'
 import PrivateRouteCurry from './privateRoute'
@@ -39,12 +40,12 @@ class AppRoutes extends React.Component {
 
     return (
       <div>
-        {isEqual(isLoggedIn, true) && <NavBar {...this.state} />}
         <Router history={history}>
           <Switch>
             <PublicRoute path='/login' exact={true} component={Login} />
             <PrivateRoute path='/welcome' exact={true} component={Welcome} />
             <PrivateRoute path='/shop' exact={true} component={ShopList} />
+            <PublicRoute path='*' exact={true} component={Home} />
           </Switch>
         </Router>
       </div>
