@@ -4,6 +4,7 @@ import { Flex } from '../../../../styles/layout'
 import { H2, P } from '../../../../styles/fonts'
 import { Button } from '../../../../styles/actions'
 import isEmpty from 'lodash/isEmpty'
+import isNil from 'lodash/isNil'
 import { connect } from 'react-redux'
 import { sendPasswordResetEmail } from '../../../../redux/actions/auth'
 
@@ -18,6 +19,7 @@ class ResetPassword extends React.Component {
 
   render() {
     const { email } = this.state
+    const { resetMessage } = this.props
     return (
       <div>
         <Flex column={true}>
@@ -32,8 +34,7 @@ class ResetPassword extends React.Component {
             width={'100%'}>
             SIGN UP
           </Button>
-          {/* {!isNil(signUpError) && <P error={true} center={true}>{signUpError}</P>}
-          {!isNil(signUpSuccess) && <P success={true} center={true}>{signUpSuccess}</P>} */}
+          {!isNil(resetMessage) && <P success={true} center={true}>{resetMessage}</P>}
         </Flex>
       </div>
     )
@@ -41,9 +42,7 @@ class ResetPassword extends React.Component {
 }
 
 const mapStateToProps = ({ auth }) => ({
-  // signingUp: auth.signingUp,
-  // signUpError: auth.signUpError,
-  // signUpSuccess: auth.signUpSuccess,
+  resetMessage: auth.resetMessage,
 })
 
 const mapDispatchToProps = {

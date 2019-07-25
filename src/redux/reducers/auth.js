@@ -15,6 +15,7 @@ const initialState = {
   signUpError: null,
   signUpSuccess: null,
   resetting: null,
+  resetMessage: null,
 }
 
 export default (state = initialState, action) => {
@@ -26,6 +27,7 @@ export default (state = initialState, action) => {
       }
     }
     case SIGN_IN_FAIL: {
+      console.log('action >>>>', action)
       return {
         ...state,
         signingIn: null,
@@ -63,12 +65,14 @@ export default (state = initialState, action) => {
       return {
         ...state,
         resetting: false,
+        resetMessage: 'If the email exists in our system, we will send you a password reset email'
       }
     }
     case RESET_PASSWORD_FAIL: {
       return {
         ...state,
         resetting: false,
+        resetMessage: 'If the email exists in our system, we will send you a password reset email'
       }
     }
     default:

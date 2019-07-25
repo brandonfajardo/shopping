@@ -50,16 +50,17 @@ class ShopList extends React.Component {
 
   render() {
     const { photos, loading } = this.props
-    // const list = [{ urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}, { urls: { regular: 'https://dev-entr-images.imgix.net/jhPLUyWA7HcP1s66h2fv57.jpeg'}}]
     return (
       <Container>
         <Row style={{ marginTop: '150px' }}>
-          <TextInput
-            onChange={e => this.setState({ search: e.target.value })}
-            onKeyPress={this.searchCategory}
-            width={'100%'}
-            style={{ marginBottom: '40px' }} 
-            placeholder='Enter a category to begin shopping' />
+          <Col>
+            <TextInput
+              onChange={e => this.setState({ search: e.target.value })}
+              onKeyPress={this.searchCategory}
+              width={'100%'}
+              style={{ marginBottom: '40px' }} 
+              placeholder='Enter a category to begin shopping' />
+          </Col>
 
             {!isEmpty(photos) && photos.map((photo, i) => (
               <Col key={`item--${i}`}xs={4} sm={4} md={3} style={{ paddingBottom: '4px', paddingRight: '4px', paddingLeft: '4px' }}>
